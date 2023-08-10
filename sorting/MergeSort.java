@@ -6,47 +6,57 @@ public class MergeSort {
             int middleElement = (lowerBound + upperBound) / 2;
             divideArray(array, lowerBound, middleElement);
             divideArray(array, middleElement + 1, upperBound);
-            mergeArray(array, lowerBound, upperBound, middleElement);
+            mergeArray(array, lowerBound, middleElement, upperBound);
         }
     }
 
-    public void mergeArray(int[] array, int lowerBound, int upperBound, int middleElement) {
+    public void mergeArray(int[] array, int lowerBound, int middleElement, int upperBound) {
         int b[] = new int[array.length];
         int i = lowerBound;
         int j = middleElement + 1;
         int k = lowerBound;
         while (i <= middleElement && j <= upperBound) {
-            System.out.println("i " + i + " j " + j + " k " + k);
             if (array[i] < array[j]) {
                 b[k] = array[i];
                 i++;
                 k++;
-            } else if (array[i] > array[j]) {
+            } else {
                 b[k] = array[j];
                 j++;
                 k++;
             }
         }
 
-        while (i < middleElement) {
-            array[k] = array[i];
+        while (i <= middleElement) {
+            b[k] = array[i];
             i++;
             k++;
         }
 
-        while (j < upperBound) {
-            array[k] = array[j];
+        while (j <= upperBound) {
+            b[k] = array[j];
             j++;
             k++;
         }
+
+        for (i = lowerBound; i <= upperBound; i++) {
+            array[i] = b[i];
+        }
+    }
+
+    public void display(int array[], int lowerBound, int upperBound) {
+        for (int i = lowerBound; i <= upperBound; i++) {
+            System.out.print("\t" + array[i]);
+        }
+        System.out.println();
     }
 
     public static void main(String args[]) {
         MergeSort mergeSort = new MergeSort();
-        int[] array = { 12, 11, 13, 5, 6 };
-        mergeSort.divideArray(array, 0, array.length);
-        for (int i = 0; i < array.length; i++) {
-            System.out.println("\t" + array[i]);
-        }
+        // int[] array = { 12, 11, 13, 5, 6 };
+        // int[] array = { 12, 31, 25, 8, 32, 17, 40, 42 };
+        int[] array = { 1, 2, 3, 4, 5, 6, 7, 8 };
+        mergeSort.divideArray(array, 0, array.length - 1);
+        mergeSort.display(array, 0, array.length - 1);
     }
 }
