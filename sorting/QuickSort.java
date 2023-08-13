@@ -1,5 +1,7 @@
 package sorting;
 
+//taking middle element as pitvot
+
 public class QuickSort {
     public int partition(int[] array, int lowerBound, int upperBound) {
         int i = lowerBound;
