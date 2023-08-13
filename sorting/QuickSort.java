@@ -5,7 +5,7 @@ public class QuickSort {
         int i = lowerBound;
         int j = upperBound;
         int pivotElement = array[(lowerBound + upperBound) / 2];
-        System.out.println("Pivot " + pivotElement + " lowerbound " + lowerBound + "higher bound " + upperBound);
+        System.out.println("Pivot " + pivotElement + " lowerbound " + lowerBound + " higher bound " + upperBound);
         while (i <= j) {
             while (array[i] < pivotElement) {
                 i++;
